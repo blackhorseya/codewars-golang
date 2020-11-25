@@ -1,7 +1,7 @@
 package kata
 
 func BouncingBall(h, bounce, window float64) int {
-	if h <= 0 {
+	if !(h > 0) {
 		return -1
 	}
 
@@ -13,10 +13,8 @@ func BouncingBall(h, bounce, window float64) int {
 		return -1
 	}
 
-	ret := 1
-	h *= bounce
-	for h > window {
-		h *= bounce
+	ret := -1
+	for ; h > window; h *= bounce {
 		ret+=2
 	}
 
