@@ -6,29 +6,23 @@ import (
 )
 
 func EncryptThis(text string) string {
-	if len(text) == 0 {
-		return ""
-	}
-
-	words := strings.Split(text, " ")
-
-	var encode []string
-	for _, word := range words {
-		tmp, new := "", ""
-		for i, char := range word {
-			if i == 0 {
-				new += strconv.Itoa(int(char))
-			} else if i == 1 {
-				tmp = string(char)
-				new += string(word[len(word) - 1])
-			} else if i == len(word) - 1 {
-				new += tmp
-			} else {
-				new += string(char)
+	ret := ""
+	for _, word := range strings.Split(text, " ") {
+		for i, letter := range word {
+			switch i {
+			case 0:
+				ret += strconv.Itoa(int(letter))
+			case 1:
+				ret += string(word[len(word) - 1])
+			case len(word) - 1:
+				ret += string(word[1])
+			default:
+				ret += string(letter)
 			}
+
 		}
-		encode = append(encode, new)
+		ret += " "
 	}
 
-	return strings.Join(encode, " ")
+	return ret[:len(ret)-1]
 }
