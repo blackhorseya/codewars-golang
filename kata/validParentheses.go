@@ -1,17 +1,11 @@
 package kata
 
+import "strings"
+
 func ValidParentheses(parens string) bool {
-	count := 0
-	for _, letter := range parens {
-		if letter == '(' {
-			count++
-		} else {
-			count--
-			if count < 0 {
-				return false
-			}
-		}
+	for strings.Contains(parens, "()") {
+		parens = strings.Replace(parens, "()", "", -1)
 	}
 
-	return count == 0
+	return len(parens) == 0
 }
