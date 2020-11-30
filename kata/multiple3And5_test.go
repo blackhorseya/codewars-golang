@@ -12,11 +12,6 @@ func TestMultiple3And5(t *testing.T) {
 		want int
 	}{
 		{
-			name: "-10 then 0",
-			args: args{-10},
-			want: 0,
-		},
-		{
 			name: "10 then 23",
 			args: args{10},
 			want: 23,
