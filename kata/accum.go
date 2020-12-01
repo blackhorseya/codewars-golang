@@ -1,21 +1,15 @@
 package kata
 
 import (
-	"fmt"
 	"strings"
 )
 
 func Accum(s string) string {
-	ret := ""
 	s = strings.ToLower(s)
+	parts := make([]string, len(s))
 	for i, letter := range s {
-		tmp := ""
-		for j := 0; j < i+1; j++ {
-			tmp += string(letter)
-		}
-
-		ret += fmt.Sprintf("%s-", strings.Title(tmp))
+		parts[i] = strings.Title(strings.Repeat(string(letter), i+1))
 	}
 
-	return ret[:len(ret)-1]
+	return strings.Join(parts, "-")
 }
