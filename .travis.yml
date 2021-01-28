@@ -1,0 +1,17 @@
+language: go
+
+git:
+  submodules: false
+
+go:
+  - '1.15'
+
+env:
+  global:
+    - GO111MODULE=on
+
+script:
+  - make test-with-coverage
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
